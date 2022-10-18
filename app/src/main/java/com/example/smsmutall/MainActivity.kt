@@ -17,9 +17,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //
-        // Created a Work Request
+        // A one time Work request.
         //val uploadWorkRequest: WorkRequest = OneTimeWorkRequestBuilder<WorkerClass>().build()
         //
+        //A periodic work request.
         val periodicWorkRequest =
             PeriodicWorkRequestBuilder<WorkerClass>(15, TimeUnit.MINUTES).build()
         //
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         //
         val textView: TextView = findViewById(R.id.tv)
         //
-        //Change the content of the text view.
+        //Change the content of the text view according to the work request's repeat interval.
         textView.text = "Periodic workRequest"
         //
         Toast.makeText(applicationContext, "OneTime", Toast.LENGTH_SHORT).show()

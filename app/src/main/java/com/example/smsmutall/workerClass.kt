@@ -14,18 +14,21 @@ class WorkerClass(context: Context?, workerParams: WorkerParameters?) :
     override fun doWork(): Result {
         return try {
             //
-            // Enter work details to perform on background
-            // Log.d is used to for debugging purposes
-            Log.d("WorkerClass","It's Working")
+            // Use the Log class to display some information about the current state of the
+            // application.
+            Log.i("WorkerClass","It's Working")
             //
+            //Call the main activity so that I can use some of its methods.
             val main: MainActivity1 = com.example.smsmutall.MainActivity()
             main.showToast()
             //
-            // Task result
+            // Return a positive result.
             return Result.success()
         } catch (throwable: Throwable) {
             //
-            Log.d("failed", "Error Sending Notification" + throwable.message)
+            Log.i("failed", "Error Sending Notification" + throwable.message)
+            //
+            //Return a negative result.
             Result.failure()
         }
     }
